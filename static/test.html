@@ -28,56 +28,73 @@ function getdata(){
 	const settings = {
 		"async": true,
 		"crossDomain": true,
-		"url": "https://mboum-finance.p.rapidapi.com/hi/history?symbol="+tickername+"&interval=15m&diffandsplits=false",
+		"url": "https://mboum-finance.p.rapidapi.com/hi/history?symbol="+tickername+"&interval=1d&diffandsplits=false",
 		"method": "GET",
 		"headers": {
-			"X-RapidAPI-Key": "apikey",
+			"X-RapidAPI-Key": "cb13e099f6msh76bac0554262195p1e57e4jsnec3cb7675f2c",
 			"X-RapidAPI-Host": "mboum-finance.p.rapidapi.com"
 		}
 	};
 
 $.ajax(settings).done(function (response) {
-	console.log(response);
-	//plotly(response);
+	//console.log(response);
+	plotting(response);
+
 });
 
 }
+// var myJson = '{"data":[{"y":[1,2,3]}],"layout":{"title":"my graph"}}';
+// var figure = JSON.parse(myJson);
 
-//function plotting(data){
-/* d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv", function(err, rows){
+// Plotly.newPlot('myDiv', figure.data, figure.layout);
 
-  function unpack(rows, key) {
-  return rows.map(function(row) { return row[key]; });
+
+function plotting(data){
+
+	//const parsed = JSON.stringify(data);
+	//console.log(parsed.items[0].close);
+	// d3.json(data, function(err, rows){
+
+	// 	function unpack(rows, key) {
+	// 	return rows.map(function(row) { return row[key]; });
+	// }
+	var dates = [];
+	var closes = [];
+	var open1 = [];
+	for (var key in data["items"]){
+  	// console.log(, data["items"][key]["close"]);
+  	dates.push(data["items"][key]["date"])
+  	closes.push(data["items"][key]["close"])
+	open1.push(data["items"][key]["open"])
+	}
+
+	var trace1 = {
+	type: "scatter",
+	mode: "lines",
+	name: 'Stock Close',
+	x: dates,
+	y: closes,
+	line: {color: '#17BECF'}
+	}
+
+	var trace2 = {
+	type: "scatter",
+	mode: "lines",
+	name: 'Stock 2 Close',
+	x: dates,
+	y: open1,
+	line: {color: '#7F7F7F'}
+	}
+
+	var data2 = [trace1,trace2];
+
+	var layout = {
+	title: 'Basic Time Series',
+	};
+
+	Plotly.newPlot('myDiv', data2, layout);
 }
 
-const parsed = JSON.parse(jsonArr);
 
-var trace1 = {
-  type: "scatter",
-  mode: "lines",
-  name: 'AAPL High',
-  x: unpack(rows, 'Date'),
-  y: unpack(rows, 'AAPL.High'),
-  line: {color: '#17BECF'}
-}
-
-var trace2 = {
-  type: "scatter",
-  mode: "lines",
-  name: 'AAPL Low',
-  x: unpack(rows, 'Date'),
-  y: unpack(rows, 'AAPL.Low'),
-  line: {color: '#7F7F7F'}
-}
-
-var data = [trace1,trace2];
-
-var layout = {
-  title: 'Basic Time Series',
-};
-
-Plotly.newPlot('myDiv', data, layout);
-})
-*/
 
 </script>

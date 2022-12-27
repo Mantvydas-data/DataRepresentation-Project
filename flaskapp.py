@@ -3,12 +3,6 @@ from stocksDAO import stocksDAO
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 
-# # stocks = [
-#     {'name':'stock1'},
-#     {'name':'stock2'},
-#     {'name':'stock3'},
-#     ]
-
 @app.route('/stocks')
 def getAll():
     result=stocksDAO.getAll()
@@ -23,34 +17,13 @@ def getAll():
 #     return jsonify({'id':newid})
 
 
-#curl "http://127.0.0.1:5000/books/2"
 @app.route('/stocks/<int:id>', methods=['GET'])
 def findById(id):
     findstocks = stocksDAO.findByID(id)
 
     return jsonify(findstocks)
 
-# @app.route('/vote/<bandname>', methods=['GET'])
-# def getCountForBand(bandname):
-#     count = voteDAO.countvotes(bandname)
-#     return jsonify({bandname:count})
 
-# @app.route('/vote', methods=['GET'])
-# def getAllCount():
-#     allcounts = []
-#     for band in bands:
-#         bandname = band['name'] 
-#         count = voteDAO.countvotes(bandname)
-#         allcounts.append({bandname:count})
-#     return jsonify(allcounts)
-
-# @app.route('/vote/all', methods=['delete'])
-# def deleteAllVote():
-#     return jsonify({'done':True})
-
-
-
-#curl  -i -H "Content-Type:application/json" -X POST -d "{\"title\":\"hello\",\"author\":\"someone\",\"price\":123}" http://127.0.0.1:5000/books
 @app.route('/stocks', methods=['POST'])
 def create():
     
@@ -69,7 +42,6 @@ def create():
     return jsonify(stock)
 
 
-#curl  -i -H "Content-Type:application/json" -X PUT -d "{\"title\":\"hello\",\"author\":\"someone\",\"price\":123}" http://127.0.0.1:5000/books/1
 @app.route('/stocks/<int:id>', methods=['PUT'])
 def update(id):
     foundstock = stocksDAO.findByID(id)
