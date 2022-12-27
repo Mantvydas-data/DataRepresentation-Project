@@ -13,7 +13,7 @@ class StocksDAO:
         self.user=       cfg.mysql['user']
         self.password=   cfg.mysql['password']
         self.database=   cfg.mysql['database']
-        self.auth_plugin= cfg.mysql['auth_plugin']
+        #self.auth_plugin= cfg.mysql['auth_plugin']
 
     def getcursor(self): 
         self.connection = mysql.connector.connect(
@@ -21,7 +21,7 @@ class StocksDAO:
             user=       self.user,
             password=   self.password,
             database=   self.database,
-            auth_plugin= self.auth_plugin,
+            #auth_plugin= self.auth_plugin,
         )
         self.cursor = self.connection.cursor()
         return self.cursor
@@ -32,7 +32,7 @@ class StocksDAO:
          
     def create(self, values):
         cursor = self.getcursor()
-        sql="insert into stocks (ticker, name, pprice, quantity) values (%s,%s,%s,%s)"
+        sql="insert into db.stocks (ticker, name, pprice, quantity) values (%s,%s,%s,%s)"
         cursor.execute(sql, values)
 
         self.connection.commit()
@@ -67,14 +67,14 @@ class StocksDAO:
 
     def update(self, values):
         cursor = self.getcursor()
-        sql="update stocks set ticker= %s, name=%s, pprice=%s, quantity=%s, where id = %s"
+        sql="update db.stocks set ticker= %s, name=%s, pprice=%s, quantity=%s, where id = %s"
         cursor.execute(sql, values)
         self.connection.commit()
         self.closeAll()
         
     def delete(self, id):
         cursor = self.getcursor()
-        sql="delete from stocks where id = %s"
+        sql="delete from db.stocks where id = %s"
         values = (id,)
 
         cursor.execute(sql, values)
@@ -97,7 +97,7 @@ class StocksDAO:
 
     def createtable(self):
         cursor = self.getcursor()
-        sql="create table stocks (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, ticker varchar(8), name varchar(250), pprice float(4,2), quantity float(10,2))"
+        sql="create table db.stocks (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, ticker varchar(8), name varchar(250), pprice float(4,2), quantity float(10,2))"
         cursor.execute(sql)
 
         self.connection.commit()
