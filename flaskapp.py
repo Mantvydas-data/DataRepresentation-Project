@@ -32,11 +32,11 @@ def create():
     # other checking 
     stock = {
         "ticker": request.json['ticker'],
-        "name": request.json['name'],
+        "sname": request.json['sname'],
         "pprice": request.json['pprice'],
         "quantity": request.json['quantity'],
     }
-    values =(stock['ticker'],stock['name'],stock['pprice'],stock['quantity'])
+    values =(stock['ticker'],stock['sname'],stock['pprice'],stock['quantity'])
     newId = stocksDAO.create(values)
     stock['id'] = newId
     return jsonify(stock)
@@ -54,15 +54,15 @@ def update(id):
     if 'pprice' in reqJson and type(reqJson['pprice']) is not int:
         abort(400)
 
-    if 'Ticker' in reqJson:
+    if 'ticker' in reqJson:
         foundstock['ticker'] = reqJson['ticker']
-    if 'name' in reqJson:
-        foundstock['name'] = reqJson['name']
+    if 's' in reqJson:
+        foundstock['sname'] = reqJson['sname']
     if 'pprice' in reqJson:
         foundstock['pprice'] = reqJson['pprice']
     if 'quantity' in reqJson:
         foundstock['quantity'] = reqJson['quantity']
-    values = (foundstock['ticker'],foundstock['name'],foundstock['pprice'],foundstock['quantity'],foundstock['id'])
+    values = (foundstock['ticker'],foundstock['sname'],foundstock['pprice'],foundstock['quantity'],foundstock['id'])
     stocksDAO.update(values)
     return jsonify(foundstock)
         

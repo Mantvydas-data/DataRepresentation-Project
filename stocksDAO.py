@@ -32,7 +32,7 @@ class StocksDAO:
          
     def create(self, values):
         cursor = self.getcursor()
-        sql="insert into db.stocks (ticker, name, pprice, quantity) values (%s,%s,%s,%s)"
+        sql="insert into db.stocks (ticker, sname, pprice, quantity) values (%s,%s,%s,%s)"
         cursor.execute(sql, values)
 
         self.connection.commit()
@@ -67,7 +67,7 @@ class StocksDAO:
 
     def update(self, values):
         cursor = self.getcursor()
-        sql="update db.stocks set ticker= %s, name=%s, pprice=%s, quantity=%s, where id = %s"
+        sql="update db.stocks set ticker=%s, sname=%s, pprice=%s, quantity=%s where id = %s"
         cursor.execute(sql, values)
         self.connection.commit()
         self.closeAll()
@@ -85,7 +85,7 @@ class StocksDAO:
         print("delete done")
 
     def convertToDictionary(self, result):
-        colnames=['id', 'ticker', 'name', "pprice", "quantity"]
+        colnames=['id', 'ticker', 'sname', "pprice", "quantity"]
         item = {}
         
         if result:
@@ -97,7 +97,7 @@ class StocksDAO:
 
     def createtable(self):
         cursor = self.getcursor()
-        sql="create table db.stocks (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, ticker varchar(8), name varchar(250), pprice float(4,2), quantity float(10,2))"
+        sql="create table db.stocks (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, ticker varchar(8), sname varchar(250), pprice float(4,2), quantity float(10,2))"
         cursor.execute(sql)
 
         self.connection.commit()
