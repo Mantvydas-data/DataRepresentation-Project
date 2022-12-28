@@ -51,7 +51,7 @@ def update(id):
     if not request.json:
         abort(400)
     reqJson = request.json
-    if 'pprice' in reqJson and type(reqJson['pprice']) is not int:
+    if 'pprice' in reqJson and type(reqJson['pprice']) is not float:
         abort(400)
 
     if 'ticker' in reqJson:
