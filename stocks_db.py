@@ -97,7 +97,7 @@ class StocksDAO:
 
     def createtable(self):
         cursor = self.getcursor()
-        sql="create table db.stocks (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, ticker varchar(8), sname varchar(250), pprice float(4,2), quantity float(10,2))"
+        sql="create table db.stocks (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, ticker varchar(8), sname varchar(250), pprice float(10,2), quantity float(10,2))"
         cursor.execute(sql)
 
         self.connection.commit()
@@ -119,12 +119,11 @@ class StocksDAO:
 stocksDAO = StocksDAO()
 
 if __name__ == "__main__":
-#     #stocksDAO.createdatabase()
-#     #stocksDAO.createtable()
+    #stocksDAO.createdatabase()
+    #stocksDAO.createtable()
 
     # data = ("NVDA", "NVIDIA", "390.45", "5.213")
     # stocksDAO.create(data)
-#     # count = voteDAO.countvotes('climbing club')
-#     # print (count)
+
 
     print("sanity")
