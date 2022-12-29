@@ -1,146 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> My Stock Portfolio Tracker</title>
-    <!-- Load plotly.js into the DOM -->
-	<script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
-
-<body>
+{% extends "layout.html" %}
+{% block content %}
 <hr>
-
 <form id="formdata" class="mx-auto row g-3" style="width: 1060px;" action="#">
-	
 <!-- Ticker picker -->
 	<label><h5>For historical performance comparison enter stock tickers: </h5></label><br>
 	<div class="col-sm-12">
 		<div class="col-sm-6">
-		<input class="form-control col-sm-3" type="name" id="tickername1" name="tickername1" required>
+			<input class="form-control col-sm-3" type="name" id="tickername1" name="tickername1" required>
 		</div>
 		<div class="col-sm-6">
-		<input class="form-control col-sm-3" type="name" id="tickername2" name="tickername2" required><br>
+			<input class="form-control col-sm-3" type="name" id="tickername2" name="tickername2" required><br>
 		</div>
 	</div>
 	<div class="col-sm-6">
-	<button class="btn btn-outline-secondary btn-sm-3" type="submit">Get Comparison Data</button>
-	
+		<button class="btn btn-outline-secondary btn-sm-3" type="submit">Get Comparison Data</button>
 	</div>
-	
 </form>
-
 <hr>
 
-	<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-</body>
-<script>
-
-function getcomparisondata(){
-	console.log("sanity")
-	var tickername1 = document.getElementById("tickername1").value
-	var tickername2 = document.getElementById("tickername2").value
-
-	
-	$.when(
-		$.ajax({          
-			cache: false,
-			"url": "https://mboum-finance.p.rapidapi.com/hi/history?symbol="+tickername1+"&interval=1d&diffandsplits=false",
-			"method": "GET",
-			"headers": {
-				"X-RapidAPI-Key": "cb13e099f6msh76bac0554262195p1e57e4jsnec3cb7675f2c",
-				"X-RapidAPI-Host": "mboum-finance.p.rapidapi.com"
-			},
-
-
-			success: function(returnhtml){     
-					result1 = returnhtml;                  
-			}           
-		}),
-
-		$.ajax({ 
-			cache: false,
-			"url": "https://mboum-finance.p.rapidapi.com/hi/history?symbol="+tickername2+"&interval=1d&diffandsplits=false",
-			"method": "GET",
-			"headers": {
-				"X-RapidAPI-Key": "cb13e099f6msh76bac0554262195p1e57e4jsnec3cb7675f2c",
-				"X-RapidAPI-Host": "mboum-finance.p.rapidapi.com"
-			},
-
-			success: function(returnhtml){                          
-				result2 = returnhtml;     
-			}           
-		})
-
-	).then(function() {
-		plotting(result1,result2);
-	});
-}
-
-function plotting(input1,input2){
-
-	var date1 = [];
-	var date2 = [];
-	var close1 = [];
-	var close2 = [];
-	if (input2){
-		for (var key in input2["items"]){
-		// console.log(, data["items"][key]["close"]);
-		date2.push(input2["items"][key]["date"])
-		close2.push(input2["items"][key]["close"])
-	}
-
-	for (var key in input1["items"]){
-  	// console.log(, data["items"][key]["close"]);
-  	date1.push(input1["items"][key]["date"])
-  	close1.push(input1["items"][key]["close"])
-	}
-
-	var trace1 = {
-	type: "scatter",
-	mode: "lines",
-	name: input1.meta.symbol+' Stock Close',
-	x: date1,
-	y: close1,
-	line: {color: '#17BECF'}
-	}
-
-	var data2 = [trace1];
-
-	var layout = {
-	title: input1.meta.symbol+' Basic Time Series',
-	};
-
-	if (input2){
-		var trace2 = {
-		type: "scatter",
-		mode: "lines",
-		name: input2.meta.symbol+' Stock Close',
-		x: date2,
-		y: close2,
-		line: {color: '#7F7F7F'}
-		}
-		var data2 = [trace1,trace2];
-		var layout = {
-		title: 'Historical Performance Comparison of '+input1.meta.symbol+' and '+input2.meta.symbol,
-	};
-	}	
-	
-	Plotly.newPlot('myDiv', data2, layout);
-}
-}
-
-var form = document.getElementById('formdata');
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); 
-	getcomparisondata();})
-
-
-</script>
-</html>
+<div id='myDiv'>
+	<!-- Plotly chart will be drawn inside this DIV -->
+</div>
+{% endblock %}
 
 <!--
 References
@@ -153,4 +34,6 @@ https://stackoverflow.com/questions/22988250/two-ajax-requests-on-same-event-at-
 https://www.w3schools.com/html/html_form_attributes.asp
 https://stackoverflow.com/questions/3384960/want-html-form-submit-to-do-nothing/3384971#3384971
 https://flask.palletsprojects.com/en/1.1.x/patterns/templateinheritance/
+https://getbootstrap.com/docs/5.3/components/navbar/
+https://stackoverflow.com/questions/19733447/bootstrap-navbar-with-left-center-or-right-aligned-items/20362024#20362024
 -->

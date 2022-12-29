@@ -14,6 +14,7 @@ app.config['MYSQL_HOST'] = os.environ["MYSQL_HOST"]
 app.config['MYSQL_USER'] = os.environ["MYSQL_USER"]
 app.config['MYSQL_PASSWORD'] = os.environ["MYSQL_PASSWORD"]
 app.config['MYSQL_DB'] = os.environ["MYSQL_DB"]
+
 # https://stackoverflow.com/a/46637194/19501420
 # For some reason without this requests do not work.
 CORS(app)
@@ -22,7 +23,8 @@ CORS(app)
 StocksDAO = StocksDAO()
 StocksDAO.createdatabase()
 StocksDAO.createtable()
-# Insert one data point
+data = ("NVDA", "NVIDIA", "390.45", "5.213")
+StocksDAO.create(data)
 
 @app.route('/stocks', methods=['GET'])
 def getAll():
