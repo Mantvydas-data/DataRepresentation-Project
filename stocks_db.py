@@ -90,7 +90,6 @@ class StocksDAO:
 
     # Create if not exists
     # https://stackoverflow.com/a/25621844/19501420
-    
     def createtable(self):
         cursor = self.getcursor()
         sql="create table if not exists stocks (id int AUTO_INCREMENT NOT NULL PRIMARY KEY, ticker varchar(8), sname varchar(250), pprice float(4,2), quantity float(10,2))"
@@ -111,7 +110,3 @@ class StocksDAO:
 
         self.connection.commit()
         self.closeAll()
-        
-if __name__ == "__main__":
-    
-    print("sanity")

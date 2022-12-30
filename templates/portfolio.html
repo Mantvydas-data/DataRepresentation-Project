@@ -1,22 +1,25 @@
 {% extends "layout.html" %}
 {% block content %}
 <div> 
-    <button class="btn btn-outline-secondary btn-sm" id="showCreateButton" onclick="showCreate()">Add New Stock
-    </button>
-</div>
-<div class="mx-auto" style="width: 1060px;">
-    <table class="table table-hover table-sm" id="stockTable">
-        <tr>
-            <th>ID</th>
-            <th>Ticker</th>
-            <th>Name</th>
-            <th>Purchase Price</th>
-            <th>Quantity</th>
-            <th>Update</th>
-            <th>Delete</th>
-            <th>Historical Performance</th>
-        </tr> 
-    </table>
+    <div class="mx-auto" style="width: 1060px;">
+        <button class="btn btn-outline-secondary btn-sm" id="showCreateButton" onclick="showCreate()">Add New Stock
+        </button>
+        <table class="table table-hover table-sm" id="stockTable">
+            <tr>
+                <th>ID</th>
+                <th>Ticker</th>
+                <th>Name</th>
+                <th>Purchase Price</th>
+                <th>Quantity</th>
+                <th>Update</th>
+                <th>Delete</th>
+                <th>Historical Performance</th>
+            </tr>
+        </table>
+        <div id="valueportfolio"><b>Total portfolio cost:</b> 
+            <span id="totalSum"></span>
+        </div>
+    </div>
 </div>
 <div class=" justify-content-center" id='createUpdateForm' style="display: none">
         <h2>
@@ -37,6 +40,7 @@
             </button>
         </span>
 </div>
+
 <hr>
 <div id='myDiv'>
     <!-- Plotly chart will be drawn inside this DIV -->

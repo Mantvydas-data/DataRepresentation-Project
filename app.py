@@ -66,6 +66,7 @@ def compare():
 def create():
     
     data = request.get_json()
+    # other checking 
     stock = {
         "ticker": data['ticker'],
         "sname": data['sname'],

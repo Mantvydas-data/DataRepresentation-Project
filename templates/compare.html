@@ -1,19 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
-<hr>
-<form id="formdata" class="mx-auto row g-3" style="width: 1060px;" action="#">
+<form id="formdata" class="ms-auto" style="width: 1060px;" action="#">
 <!-- Ticker picker -->
-	<label><h5>For historical performance comparison enter stock tickers: </h5></label><br>
-	<div class="col-sm-12">
-		<div class="col-sm-6">
-			<input class="form-control col-sm-3" type="name" id="tickername1" name="tickername1" required>
+	<div id="hideCompare">
+		<label>
+			<h5>For historical performance comparison enter stock tickers: </h5>
+		</label>
+		<br>
+		<div class="col-sm-12">
+			<div class="col-sm-3">
+				<input class="form-control col-sm-3" type="name" id="tickername1" name="tickername1" placeholder="Stock ticker 1" required>
+				<input class="form-control col-sm-3" type="name" id="tickername2" name="tickername2" placeholder="Stock ticker 2"required><br>
+			</div>
+			<div class="mx-auto">
+				<button class="btn btn-outline-secondary btn-sm-6" type="submit">Get Comparison Data</button>
+			</div>
 		</div>
-		<div class="col-sm-6">
-			<input class="form-control col-sm-3" type="name" id="tickername2" name="tickername2" required><br>
-		</div>
-	</div>
-	<div class="col-sm-6">
-		<button class="btn btn-outline-secondary btn-sm-3" type="submit">Get Comparison Data</button>
 	</div>
 </form>
 <hr>
