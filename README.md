@@ -22,21 +22,18 @@ Assessment instructions can be downloaded <a href="https://github.com/andrewbeat
 <p>You should also create the web pages that can consume the API. I.e. performs CRUD operations on the data.</p>
 <br>
 
-<h3>Libraries and Packages Used</h3>
+<h3>Project</h3>
 
-<p><a href="https://numpy.org/doc/stable/user/quickstart.html">Numpy</a> - NumPy is the fundamental package for scientific computing in Python.</p>
-<p><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html">Matplotlib- Pyplot</a> - Matplotlib.pyplot is a state-based interface to matplotlib, where Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.</p>
-<p><a href="https://seaborn.pydata.org/">Seaborn</a> - Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.</p>
+<p>Web application with web interface has been created based on lecture notes in ATU Data Representation module. Sever application is using Fask framework in viertual environment to route user requests and perform CRUD operations. Project theme is financial stock portfolio tracker where user can add stocks by ticker(stock identifier) also, name, purhase price and quantity.</p>
+<p>Third party API is used to obtain market data and plot historical stock price changes for each position and also historical price comparison of two stocks entered. Website interface provides user friendly experience with comprehensive choices.</p>
+<p> To try follow best practices code is separeted out to respective files: CSS, Javascript. Flask templating is used for HTML files.</p>
+<br>
+___
+<h3>Main Libraries and Packages Used</h3>
+
+<p><a href="https://flask.palletsprojects.com/en/2.2.x/">Flask</a> - Flask is web framework in Python.</p>
 <p><a href="https://www.anaconda.com/products/individual">Anaconda</a> - Python based platform for Data Science.</p>
-<p><a href="https://pandas.pydata.org/">Pandas</a> - Python package for working with dataframes.</p>
-<p><a href="https://pandas.pydata.org/">Camenot</a> - Package for PDF table extraction.</p>
-
-<p>Libraries:</p>
-<p>-----</p>
-<p>-----</p>
-<p>-----</p>
-<p>-----</p>
-
+<p><a href="https://www.mysql.com/">Mysql</a> - MySQL is an open-source relational database management system.</p>
 
 ___
 
@@ -45,5 +42,28 @@ ___
 <p>Assignment has been completed using Python version 3.9.15 that can be downloaded <a href="https://www.python.org/downloads/">here</a> with Anaconda version 22.11.1 that can be downloaded <a href="https://www.anaconda.com/products/individual">here</a>. While Python and related libraries-packages can be installed separately it is encouraged to use latest Anaconda distribution that provides a wide variety of data science related tools.</p>
 
     
-<p>To run the code <a href="https://github.com/Mantvydas-data/DataRepresentation-Project.git">repository</a> is to be cloned or files to be downloaded manually as Zip file by following <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">Github guide</a>. Commander of choice can be used, that will require navigation to repository download location, launching of ---------------TO BE CONTINUED----------------</p>
+<p>To run the code <a href="https://github.com/Mantvydas-data/DataRepresentation-Project.git">repository</a> is to be cloned or files to be downloaded manually as a zip file by following <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">Github guide</a>, zip file should be extracted.<br> Commander of choice can be used, that will require navigation to repository download location:<br></p>
+![Data shape, missing values count and top of dataset](https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/1.PNG) 
+<p>Create and activate virtual environment inside project directory:<br></p>
+![Data shape, missing values count and top of dataset](https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/1.PNG) 
+<p>Install required packages to virtual environment created based on requirenmnets.txt<br></p>
+![Data shape, missing values count and top of dataset](https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/1.PNG) 
+<p>As project conatains third party API keys they will be shared by email. Save .env file in project location.<br></p>
+<p>Launch Flask server file:<br></p>
+![Data shape, missing values count and top of dataset](https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/1.PNG) 
+<p>Website should be accessible on localhost address 127.0.0.1:5000<br></p>
+![Data shape, missing values count and top of dataset](https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/1.PNG) 
+<p>Mysql database will be created containing stock table and one initial stock. Any stocks can be added and updated using website CRUD functionality. As long stock ticker is valid historical performance graphs will be generated. Stock identifier example list is available <a href="https://stockanalysis.com/stocks/">here</a>.<br></p>
+
+___
+
+<p>Project is hosted on PythonAnywhere and can be reached by following address: <a href="mattdata.pythonanywhere.com">mattdata.pythonanywhere.com</a><br></p>
+<p>Main page:<br></p>
+![Data shape, missing values count and top of dataset](https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/1.PNG) 
+<p>New stock and stock update:<br></p>
+<img src="https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/tim-russmann-hws29QtFM3U-unsplash.jpg" width="250"/> <img src="https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/dmitry-stepanov-o7zBtfqfxxo-unsplash.jpg" width="250"/>
+<p>Historical stock price comparison page:<br></p>
+![Data shape, missing values count and top of dataset](https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/1.PNG) 
+
+<h3>The End.</h3>
 
