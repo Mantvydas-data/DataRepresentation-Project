@@ -2,6 +2,7 @@ import mysql.connector
 import os
 
 
+# StocksDAO class containing functions for CRUD operations
 class StocksDAO:
     def __init__(self):
         self.host=       os.environ["MYSQL_HOST"]
@@ -87,6 +88,7 @@ class StocksDAO:
                 item[colName] = value
         
         return item
+
 
     # Create if not exists
     # https://stackoverflow.com/a/25621844/19501420

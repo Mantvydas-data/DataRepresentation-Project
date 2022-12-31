@@ -6,6 +6,8 @@ body {
   background-color: #ffffff;
 }
 
+/* CSS for loading action overlay spinner */
+ 
 .mosaic-loader {
   --cell-size: 64px;
   --cell-spacing: 1px;

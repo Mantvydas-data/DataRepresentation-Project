@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import requests
 import os
 
-# Load environment variables
+# Load environment variables to import keys and parameters from .env
 load_dotenv()
 
 app = Flask(__name__, static_url_path='', template_folder="templates")
@@ -19,19 +19,21 @@ app.config['MYSQL_DB'] = os.environ["MYSQL_DB"]
 # For some reason without this requests do not work.
 CORS(app)
 
-
+# Calling StockDAO class and creating initial datbase with a table
 StocksDAO = StocksDAO()
 StocksDAO.createdatabase()
 StocksDAO.createtable()
 data = ("NVDA", "NVIDIA", "390.45", "5.213")
 StocksDAO.create(data)
 
+# To get all stocks
 @app.route('/stocks', methods=['GET'])
 def getAll():
     result=StocksDAO.getAll()
     response = jsonify(result)
     return response
 
+# To call to third party API returning stock market data
 @app.route('/mboum/<tickername>', methods=['GET'])
 def mboum(tickername):
     if tickername:
@@ -48,25 +50,28 @@ def mboum(tickername):
     else:
         abort(400)
 
-
+# To get stock by id
 @app.route('/stocks/<int:id>', methods=['GET'])
 def findById(id):
     findstocks = StocksDAO.findByID(id)
     return jsonify(findstocks)
 
+# To redirect to main page
 @app.route('/')
 def portfolio():
     return render_template("portfolio.html")
 
+# To redirect to stock comparison page
 @app.route('/compare', methods=['GET'])
 def compare():
     return render_template("compare.html")
 
+# To create a new stock
 @app.route('/stocks', methods=['POST'])
 def create():
     
     data = request.get_json()
-    # other checking 
+    
     stock = {
         "ticker": data['ticker'],
         "sname": data['sname'],
@@ -79,6 +84,7 @@ def create():
     return jsonify(stock)
 
 
+# To find sock by id and update it
 @app.route('/stocks/<int:id>', methods=['PUT'])
 def update(id):
     foundstock = StocksDAO.findByID(id)
@@ -104,12 +110,11 @@ def update(id):
     return jsonify(foundstock)
         
 
-
+# To find sock by id and delete it
 @app.route('/stocks/<int:id>' , methods=['DELETE'])
 def delete(id):
     StocksDAO.delete(id)
     return jsonify({"done":True})
-
 
 
 if __name__ == "__main__":
