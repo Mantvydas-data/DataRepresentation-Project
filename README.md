@@ -6,7 +6,7 @@
 Photo by <a href="https://unsplash.com/@tvick?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Taylor Vick</a> on <a href="https://unsplash.com/photos/M5tzZtFCOfs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
   
-<h2 style="text-align: center;">ATU Data Represntation Assessment 2022</h2>
+<h2 style="text-align: center;">ATU Data Representation Assessment 2022</h2>
 <h2 style="text-align: center;">This repository contains Flask web application with RESTful API linked to a database and website that consumes API and performs CRUD operations.</h2>
 <h4>Student: Mantvydas Jokubaitis</h4>
 
@@ -23,9 +23,9 @@ Assessment instructions can be downloaded <a href="https://github.com/andrewbeat
 
 <h3>Project</h3>
 
-<p>Web application with web interface has been created based on lecture notes in ATU Data Representation module. Sever application is using Fask framework in viertual environment to route user requests and perform CRUD operations. Project theme is financial stock portfolio tracker where user can add stocks by ticker(stock identifier) also, name, purhase price and quantity.</p>
-<p>Third party API is used to obtain market data and plot historical stock price changes for each position and also historical price comparison of two stocks entered. Website interface provides user friendly experience with comprehensive choices.</p>
-<p> To try following best practices code is separeted out to respective files: CSS, Javascript. Flask templating is used for HTML files.</p>
+<p>Web application with web interface has been created based on lecture notes in ATU Data Representation module. Sever application is using Flask framework in virtual environment to route user requests and perform CRUD operations. Project theme is financial stock portfolio tracker where user can add stocks by ticker(stock identifier) also, name, purchase price and quantity.</p>
+<p>Third party API is used to obtain market data and plot historical stock price changes for each portfolio position and also historical price comparison of two individual stocks entered. Website interface provides user friendly experience with comprehensive choices.</p>
+<p> To try following best practices code is separated out to respective files: CSS, JavaScript. Flask templating is used for HTML files.</p>
 
 ___
 <h3>Main Libraries and Packages Used</h3>
@@ -47,22 +47,24 @@ ___
 <img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/step2.PNG"/> 
 <p>Install required packages to virtual environment created based on requirenmnets.txt<br></p>
 <img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/step3.PNG"/> 
-<p>As project conatains third party API keys they will be shared by email. Save .env file in project location.<br></p>
-<p>Launch Flask server file:<br></p>
-<img src="https://github.com/Mantvydas-data/pands-project2021/blob/main/readme_images/tim-russmann-hws29QtFM3U-unsplash.jpg" width="250"/> 
-<p>Website should be accessible on localhost address 127.0.0.1:5000<br></p>
+<p>As project contains third party API keys they will be shared by email. Save .env file in project location.<br></p>
+<p>Launch Flask server file, website should be accessible on localhost address 127.0.0.1:5000 <br></p>
 <img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/step4.PNG"/> 
-<p>Mysql database will be created containing stock table and one initial stock. Any stocks can be added and updated using website CRUD functionality. As long stock ticker is valid historical performance graphs will be generated. Stock identifier example list is available <a href="https://stockanalysis.com/stocks/">here</a>.<br></p>
+<img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/step5.PNG"/> 
+<p>MySQL database will be created containing stock table and one initial stock. Any stocks can be added and updated using website CRUD functionality. As long stock ticker is valid historical performance graphs will be generated. Stock identifier example list is available <a href="https://stockanalysis.com/stocks/">here</a>.<br></p>
 
 ___
 
 <p>Project is hosted on PythonAnywhere and can be reached by following address: <a href="mattdata.pythonanywhere.com">mattdata.pythonanywhere.com</a><br></p>
 <p>Main page:<br></p>
-<img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/pa1.PNG" width="500"/> 
+<img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/pa1.PNG" width="1000"/> 
 <p>New stock and stock update:<br></p>
-<img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/pa2.PNG" width="250"/> <img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/pa3.PNG" width="250"/>
+<p float="left">
+<img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/pa2.PNG" width="450"/>
+<img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/pa3.PNG" width="450"/>
+</p>
 <p>Historical stock price comparison page:<br></p>
-<img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/pa4.PNG" width="500"/>  
+<img src="https://github.com/Mantvydas-data/DataRepresentation-Project/blob/main/static/pictures/pa4.PNG" width="1000"/>  
 
 <h3>The End.</h3>
 
